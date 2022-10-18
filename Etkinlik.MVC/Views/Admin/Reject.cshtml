@@ -1,0 +1,35 @@
+﻿@model Etkinlik.MVC.Models.ConfirmActivityViewModel
+
+@{
+    ViewData["Title"] = "Reject";
+}
+
+<h1>Reject</h1>
+
+<h4>ConfirmActivityViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Reject" method="post">            
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>            
+            <div class="form-group form-check">
+                <input type="hidden" asp-for="Id" value="@ViewBag.Id" />
+                    <input type="hidden" class="form-check-input" asp-for="Status" value="false" />
+            </div>
+            <div class="form-group">
+                <label asp-for="RejectReason" class="control-label"></label>
+                <input asp-for="RejectReason" class="form-control" />
+                <span asp-validation-for="RejectReason" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+            <input type="hidden" asp-for="Id" value="@ViewBag.Id" />
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

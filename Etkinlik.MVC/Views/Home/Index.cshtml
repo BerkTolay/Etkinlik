@@ -1,0 +1,49 @@
+﻿@using Etkinlik.Core.DTOs
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+@model List<ActivityWithAllDetails>
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Etkinlik Adı</td>
+            <td>Categori Adı</td>
+            <td>Kontenjan</td>
+            <td>Adres</td>            
+            <td>Tarih</td>
+            <td>Açıklama</td>            
+            <td>Tip</td
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Where(x=>x.ApprovedByAdmin==true))
+        {
+            <tr>                
+                <td>@item.Name</td>
+                <td>@item.CategoryName</td>
+                <td>@item.Quota</td>
+                <td>@item.Address</td>                
+                <td>@item.Date.Day/@item.Date.Month - @item.LastDate.Day/@item.LastDate.Month</td>
+                <td>@item.Description</td>
+                @if(@item.IsFree==false)  {
+                     <td>Ücretli</td> 
+                }
+                  else{
+                       <td>Ücretsiz</td>
+                  } 
+                    
+                   
+                
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+
